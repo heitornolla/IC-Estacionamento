@@ -1,5 +1,5 @@
 import random
-from lib.vaga import Vaga
+from src.vaga import Vaga
 
 class Estacionamento:
     def __init__(self, total_vagas=20):
