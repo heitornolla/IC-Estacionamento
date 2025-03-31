@@ -1,6 +1,6 @@
 # IC-Estacionamento
 
-[PT]
+**[PT]**
 
 O código presente neste repositório é relacionado a um projeto de graduação, sendo conduzido na aculdade de Tecnologia (FT) da Unicamp.
 
@@ -10,7 +10,7 @@ Atualmente, o código é experimental, e não foi desenvolvido para ser embarcad
 
 O repositório está atualmente fechado para qualquer contribuição.
 
-[EN]
+**[EN]**
 
 The code in this repository is related to a graduation project being conducted in Unicamp's Faculty of Technlogy (FT).
 
