@@ -1,8 +1,10 @@
+import argparse
+
 from src.estacionamento import Estacionamento
 
 # Simulação de um cliente chegando
-def simular_estacionamento():
-    estacionamento = Estacionamento()
+def simular_estacionamento(args):
+    estacionamento = Estacionamento(total_vagas=args.total_vagas)
     print("\nSituação inicial do estacionamento:")
     estacionamento.exibir_vagas()
 
@@ -28,4 +30,8 @@ def simular_estacionamento():
         print("Desculpe, não há vagas disponíveis com essas características.")
 
 if __name__ == '__main__': 
-  simular_estacionamento()
+  parser = argparse.ArgumentParser(description="Defina a quantidade de vagas na inicialização")
+  parser.add_argument("--total_vagas", type=int)
+  args = parser.parse_args()
+
+  simular_estacionamento(args)
