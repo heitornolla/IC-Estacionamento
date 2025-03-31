@@ -1,4 +1,4 @@
-from lib.estacionamento import Estacionamento
+from src.estacionamento import Estacionamento
 
 # Simulação de um cliente chegando
 def simular_estacionamento():
