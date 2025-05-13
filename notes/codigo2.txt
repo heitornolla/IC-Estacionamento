@@ -1,0 +1,36 @@
+// Programa : Teste de acionamento Sensor Hall KY-003
+// Autor : Arduino e Cia
+
+// define a porta para o acionamento do led
+int pinoled = 6;      
+// Porta ligada ao pino SINAL do sensor
+int pinosinal = 4;    
+// Armazena informações sobre a leitura do sensor
+int leitura;          
+// Armazena o estado do led (ligado/desligado)
+int estadoled = 0;   
+
+void setup()
+{
+  //Define o pino do led como saida
+  pinMode(pinoled, OUTPUT); 
+
+  //Define o pino do sensor hall como entrada
+  pinMode(pinosinal, INPUT);      
+
+}
+
+void loop()
+{
+  leitura = digitalRead(pinosinal);
+  if (leitura != 1)
+  {
+    while(digitalRead(pinosinal) != 1)
+    {
+      delay(100);
+    }
+    // Inverte o estado
+    estadoled = !estadoled;
+    digitalWrite(pinoled , estadoled);  
+  } 
+}
