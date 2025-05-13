@@ -1,0 +1,30 @@
+ 	codigo teste - ultrassonco:
+
+#define Pinoecho 11 // Pino Echo do sensor ultrassônico será conectado à porta digital 11 do Arduino.
+#define Pinotrig 12 // Pino Trig do sensor ultrassônico será conectado à porta digital 12 do Arduino.
+int distancia; // Variável que armazenará os valores de distância medidos pelo sensor.
+long tempo; // Variável que armazenará o intervalo de tempo da reflexão da onda no sensor.
+
+void setup() {
+  pinMode(Pinoecho, INPUT); // O pino Echo do sensor será configurado como entrada, recebendo o sinal refletido.
+  pinMode(Pinotrig, OUTPUT); // O pino Trig do sensor será configurado como saída, acionando a emissão da onda.
+  Serial.begin(9600); // Inicia a comunicação serial a 9600 bps (bits por segundo) para visualizar os resultados no monitor serial.
+}
+
+void loop() {
+  digitalWrite(Pinotrig, LOW); // Define o pino Trig como LOW para garantir que ele comece com valor zero.
+  delay(4); // Espera por 4 milissegundos antes de enviar o pulso.
+  digitalWrite(Pinotrig, HIGH); // Define o pino Trig como HIGH para emitir a onda ultrassônica por 10 milissegundos.
+  delay(10); // Espera 10 milissegundos para garantir que a onda seja emitida corretamente.
+  digitalWrite(Pinotrig, LOW); // Define o pino Trig como LOW para finalizar a emissão da onda.
+
+  tempo = pulseIn(Pinoecho, HIGH); // O pino Echo é ativado (HIGH) quando o sinal refletido é recebido. 'pulseIn' mede o tempo em que o pino Echo está HIGH e armazena esse tempo na variável 'tempo'.
+  
+  distancia = (tempo * 0.034) / 2; // Calcula a distância: 'tempo' é o tempo de ida e volta da onda. Multiplicamos o tempo pela velocidade do som (aproximadamente 0.034 cm/µs) e dividimos por 2, pois a onda percorre o caminho de ida e volta.
+
+  Serial.print("Distância medida: "); 
+  Serial.print(distancia); // Envia o valor da distância em centímetros para o monitor serial.
+  Serial.println(" cm");
+
+  delay(50); // Aguarda 50 milissegundos antes de realizar a próxima leitura.
+}
